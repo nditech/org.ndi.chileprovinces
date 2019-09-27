@@ -1,9 +1,19 @@
 <?php
 
+require_once 'chileprovinces.civix.php';
+
+/**
+ * Implements hook_civicrm_config().
+ *
+ * @link https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_config/
+ */
+function chileprovinces_civicrm_config(&$config) {
+  _chileprovinces_civix_civicrm_config($config);
+}
+
 /**
  * Return a list of all the counties
  */
-
 function chileprovinces_listcounties() {
   $countryIso = 'CL';
   $counties = array(
@@ -430,7 +440,6 @@ function chileprovinces_loadcounties() {
     $states = $result['api.Address.getoptions']['values'];
 
     // go state-by-state to check existing counties
-
     foreach ($counties as $stateName => $state) {
       $id = array_search($stateName, $states);
       if ($id === FALSE) {
@@ -476,15 +485,6 @@ function chileprovinces_civicrm_install() {
 }
 
 /**
- * Implementation of hook_civicrm_enable
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_enable
- */
-function chileprovinces_civicrm_enable() {
-  chileprovinces_loadcounties();
-}
-
-/**
  * Implementation of hook_civicrm_upgrade
  *
  * @param $op string, the type of operation being performed; 'check' or 'enqueue'
@@ -496,5 +496,5 @@ function chileprovinces_civicrm_enable() {
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_upgrade
  */
 function chileprovinces_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
-  chileprovinces_loadcounties();
+  return _chileprovinces_civix_civicrm_upgrade($op, $queue);
 }
