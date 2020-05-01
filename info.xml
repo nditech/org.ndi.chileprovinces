@@ -12,13 +12,13 @@
   <version>1.1</version>
   <develStage>stable</develStage>
   <urls>
-	  <url desc="documentation">http://aghstrategies.com/counties</url>
+    <url desc="documentation">http://aghstrategies.com/counties</url>
   </urls>
   <compatibility>
-    <ver>4.4</ver>
-    <ver>4.5</ver>
-    <ver>4.6</ver>
-    <ver>4.7</ver>
+    <ver>5.0</ver>
   </compatibility>
   <comments>Use this extension to load Provinces for Chile.  After installation, this extension does nothing (and can even be disabled).</comments>
+  <civix>
+    <namespace>CRM/Chileprovinces</namespace>
+  </civix>
 </extension>
